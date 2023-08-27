@@ -5,7 +5,7 @@ from .models import Company
 # Create your views here.
 def index(request):
     companies = Company.objects.all()
-    return render(request, 'business_loan:index.html', {'companies': companies})    
+    return render(request, 'business_loan/index.html', {'companies': companies})    
 
 
   
