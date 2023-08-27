@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <table class="table table-bordered table-hover">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Year</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for company in companies %}
+            <tr>
+                <td>{{company.name}}</td>
+                <td>{{company.incorporation_year}}</td>
+              </tr>
+          {% endfor %}
+          
+      </tbody>
+  </table>
+{% endblock  %}
+
