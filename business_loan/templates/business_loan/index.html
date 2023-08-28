@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <table class="table table-bordered table-hover">
+  {% comment %} <table class="table table-bordered table-hover">
       <thead>
           <tr>
               <th>Name</th>
@@ -17,6 +17,38 @@
           {% endfor %}
           
       </tbody>
-  </table>
+  </table> {% endcomment %}
+
+  <select id="companyselect" name="pitcher" class="player-dropdown">
+    {% for company in companies %}
+        <option value="{{ company.id}}">{{ company.name }}</option>
+    {% endfor %}
+
+
+    <select id="accountselect" name="accounts" class="account-dropdown">
+        {% for account in accounts %}
+            <option value="{{ account.id}}">{{ account.name }}</option>
+        {% endfor %}
+    
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Loan Amount ($)</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+          </div>
+    
+    {% comment %} $('select').on('change', function() {
+
+        var value = $(this).val();
+         {% endcomment %}
+
+        {% for bsheet in sheet %}
+           <div><span> {{ bsheet}} </span> </div>
+        {% endfor %}
+         
+    <input type="submit" value="Request Balance Sheet"/>
+    </select>
+
+    
 {% endblock  %}
 

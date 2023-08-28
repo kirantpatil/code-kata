@@ -1,0 +1,28 @@
+<head>
+    <meta charset="UTF-8">
+    <title>User Information Form</title>
+    </head>
+    <body>
+        <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="Submit" name="submit" value="Request Balance Sheet"/>
+        </form>
+        
+        {% if submitbutton == "Request Balance Sheet"  %} 
+        {% comment %} <h1> Your Company is {{ company_name }}</h1>
+        <h1> Your Accounting Provider name is {{ accounting_provider }}</h1> {% endcomment %}
+        <h1> Your loan_amount is {{ loan_amount }} </h1> 
+
+        <h2> {{company_name}} Balance Sheet for year 2022</h2>
+            {% for bsheet in balance_sheet %}
+            <span> {{ bsheet}} </span>
+            {% endfor %} 
+            
+        <h1> Average Asset Value is {{ average_assetvalue }} </h1> 
+        <h1> PreAssessment value is {{preAssessment}} </h1>
+        <h1> Loan Application status : {{ decision }} </h1> 
+
+        {% endif %}
+
+    </body>
