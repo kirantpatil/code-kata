@@ -8,11 +8,12 @@ class PreAssessment:
             total_pl += bl["profitOrLoss"]
             total_av += bl["assetsValue"]
         avg_assetsValue = int(total_av) / len(balance_sheet)
+        avg_profitorloss = int(total_pl/ len(balance_sheet))
         print ("Average Asset Value", avg_assetsValue)
         
         if (avg_assetsValue > float(loan_amount)):
             preAssessment = 100
-        elif (total_pl > int(loan_amount)):
+        elif (avg_profitorloss > float(loan_amount)):
             preAssessment = 60
         else:
             preAssessment = 20
