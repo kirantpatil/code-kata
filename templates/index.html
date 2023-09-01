@@ -1,28 +1,52 @@
-<head>
-    <meta charset="UTF-8">
-    <title>User Information Form</title>
-    </head>
-    <body>
-        <form action="" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="Submit" name="submit" value="Request Balance Sheet"/>
-        </form>
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" >
+      <div class="row">
+        <div class="col-6"> </br>
+          <form action="" method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="Submit" name="submit" value="Request Balance Sheet"/>
+          </form>
         
-        {% if submitbutton == "Request Balance Sheet"  %} 
-        {% comment %} <h1> Your Company is {{ company_name }}</h1>
-        <h1> Your Accounting Provider name is {{ accounting_provider }}</h1> {% endcomment %}
-        <h1> Your loan_amount is {{ loan_amount }} </h1> 
+          {% if submitbutton == "Request Balance Sheet"  %} 
+          {% comment %} <h1> Your Company is {{ company_name }}</h1>
+          <h1> Your Accounting Provider name is {{ accounting_provider }}</h1> {% endcomment %}
+        </br>        </br>
+          <h5> Loan Amount : {{ loan_amount }} </h5> </br>
+          <h5> Average Asset Value is {{ average_assetvalue }} </h5> </br>
+          <h5> PreAssessment value is {{preAssessment}} </h5> </br>
+          <h5> Loan Application status : {{ decision }} </h5> 
+        </div>
 
-        <h2> {{company_name}} Balance Sheet for year 2022</h2>
-            {% for bsheet in balance_sheet %}
-            <span> {{ bsheet}} </span>
-            {% endfor %} 
-            
-        <h1> Average Asset Value is {{ average_assetvalue }} </h1> 
-        <h1> PreAssessment value is {{preAssessment}} </h1>
-        <h1> Loan Application status : {{ decision }} </h1> 
-
-        {% endif %}
-
-    </body>
+        <div class="col-6"> </br>
+          <h6> {{company_name}} Balance Sheet for year 2022</h6>
+                  <table class="table">
+                      <thead>
+                      <tr>
+                          <th>Year</th>
+                          <th>Month</th>
+                          <th>ProfitOrLoss</th>
+                          <th>AssetsValue</th>
+                      </tr>
+                      </thead>
+              
+                      <tbody>      
+                          {% for bsheet in balance_sheet %}  
+                          <tr>
+                          <span> <td>{{ bsheet.year }}</td></span>
+                          <span> <td>{{ bsheet.month}} </td></span>
+                          <span> <td>{{ bsheet.profitOrLoss}} </td></span>
+                          <span> <td>{{ bsheet.assetsValue }} </td></span>
+                          </tr>
+                          {% endfor %} 
+                      </tbody>
+                  </table>   
+              
+      
+          {% endif %}
+        </div>
+      </div>
+    </div>
+{% endblock  %}

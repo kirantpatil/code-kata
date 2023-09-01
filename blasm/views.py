@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from forms import UserForm
 from Accounts.Xero import FinancialStatements
-from rules_engine.rules import PreAssessment
+from Rules_engine.rules import PreAssessment
 from Decision_engine.service import Decision
 
 
